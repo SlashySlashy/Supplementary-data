@@ -1,0 +1,55 @@
+Assembly	CarpeDeam_Dryas_octopetala_long_10_depth	CarpeDeam_Dryas_octopetala_long_15_depth	CarpeDeam_Dryas_octopetala_long_20_depth	CarpeDeam_Dryas_octopetala_long_30_depth
+# contigs (>= 0 bp)	19	56	107	139
+# contigs (>= 1000 bp)	1	16	30	90
+# contigs (>= 5000 bp)	0	0	0	0
+# contigs (>= 10000 bp)	0	0	0	0
+# contigs (>= 25000 bp)	0	0	0	0
+# contigs (>= 50000 bp)	0	0	0	0
+Total length (>= 0 bp)	11736	48911	108444	180126
+Total length (>= 1000 bp)	1002	24377	54798	144854
+Total length (>= 5000 bp)	0	0	0	0
+Total length (>= 10000 bp)	0	0	0	0
+Total length (>= 25000 bp)	0	0	0	0
+Total length (>= 50000 bp)	0	0	0	0
+# contigs	19	56	107	139
+Largest contig	1002	2436	4151	3378
+Total length	11736	48911	108444	180126
+Reference length	158178	158178	158178	158178
+GC (%)	37.30	37.05	35.83	35.50
+Reference GC (%)	36.48	36.48	36.48	36.48
+N50	588	942	1000	1461
+NG50	-	-	750	1505
+N90	515	525	583	727
+NG90	-	-	-	1041
+auN	649.0	1119.7	1514.8	1586.1
+auNG	48.2	346.2	1038.5	1806.2
+L50	9	17	30	45
+LG50	-	-	59	38
+L90	17	47	88	111
+LG90	-	-	-	88
+# misassemblies	0	0	1	1
+# misassembled contigs	0	0	1	1
+Misassembled contigs length	0	0	940	1485
+# local misassemblies	0	0	0	0
+# scaffold gap ext. mis.	0	0	0	0
+# scaffold gap loc. mis.	0	0	0	0
+# unaligned mis. contigs	0	0	0	0
+# unaligned contigs	0 + 0 part	0 + 0 part	0 + 0 part	0 + 0 part
+Unaligned length	0	0	0	0
+Genome fraction (%)	7.342	28.562	62.322	85.141
+Duplication ratio	1.008	1.081	1.098	1.336
+# N's per 100 kbp	0.00	0.00	0.00	0.00
+# mismatches per 100 kbp	93.97	139.25	144.06	135.63
+# indels per 100 kbp	0.00	0.00	0.00	0.00
+Largest alignment	1001	2434	4150	3376
+Total aligned length	11706	48834	108290	179907
+NA50	586	940	993	1447
+NGA50	-	-	749	1504
+NA90	513	524	581	720
+NGA90	-	-	-	1018
+auNA	645.8	1116.9	1510.2	1577.5
+auNGA	47.9	345.4	1035.4	1796.4
+LA50	9	17	30	45
+LGA50	-	-	59	38
+LA90	17	47	88	112
+LGA90	-	-	-	89

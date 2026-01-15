@@ -1,0 +1,213 @@
+/home/augustthomasen/miniconda3/envs/PUKenv/bin/quast.py Megahit_Dryas_octopetala_1000_depth.fa Megahit_Dryas_octopetala_500_depth.fa Megahit_Dryas_octopetala_250_depth.fa Megahit_Dryas_octopetala_100_depth.fa Megahit_Dryas_octopetala_50_depth.fa Megahit_Dryas_octopetala_20_depth.fa Megahit_Dryas_octopetala_10_depth.fa Megahit_Dryas_octopetala_5_depth.fa -r Dryas_octopetala.fasta -o Megahit_Dryas_octopetala_quast
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35 (linux_64)
+  Python version: 3.9.0
+  CPUs number: 16
+
+Started: 2025-02-17 15:45:43
+
+Logging to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /home/augustthomasen/SIM
+Main parameters: 
+  MODE: default, threads: 4, min contig length: 500, min alignment length: 65, min alignment IDY: 95.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Reference:
+  /home/augustthomasen/SIM/Dryas_octopetala.fasta ==> Dryas_octopetala
+
+Contigs:
+  Pre-processing...
+  1  Megahit_Dryas_octopetala_1000_depth.fa ==> Megahit_Dryas_octopetala_1000_depth
+  2  Megahit_Dryas_octopetala_500_depth.fa ==> Megahit_Dryas_octopetala_500_depth
+  3  Megahit_Dryas_octopetala_250_depth.fa ==> Megahit_Dryas_octopetala_250_depth
+  4  Megahit_Dryas_octopetala_100_depth.fa ==> Megahit_Dryas_octopetala_100_depth
+  5  Megahit_Dryas_octopetala_50_depth.fa ==> Megahit_Dryas_octopetala_50_depth
+  6  Megahit_Dryas_octopetala_20_depth.fa ==> Megahit_Dryas_octopetala_20_depth
+  7  Megahit_Dryas_octopetala_10_depth.fa ==> Megahit_Dryas_octopetala_10_depth
+  8  Megahit_Dryas_octopetala_5_depth.fa ==> Megahit_Dryas_octopetala_5_depth
+
+2025-02-17 15:45:43
+Running Basic statistics processor...
+  Reference genome:
+    Dryas_octopetala.fasta, length = 158178, num fragments = 1, GC % = 36.48
+  Contig files: 
+    1  Megahit_Dryas_octopetala_1000_depth
+    2  Megahit_Dryas_octopetala_500_depth
+    3  Megahit_Dryas_octopetala_250_depth
+    4  Megahit_Dryas_octopetala_100_depth
+    5  Megahit_Dryas_octopetala_50_depth
+    6  Megahit_Dryas_octopetala_20_depth
+    7  Megahit_Dryas_octopetala_10_depth
+    8  Megahit_Dryas_octopetala_5_depth
+  Calculating N50 and L50...
+    1  Megahit_Dryas_octopetala_1000_depth, N50 = 76937, L50 = 1, auN = 60932.5, Total length = 131905, GC % = 35.25, # N's per 100 kbp =  0.00
+    2  Megahit_Dryas_octopetala_500_depth, N50 = 76951, L50 = 1, auN = 60938.4, Total length = 131932, GC % = 35.25, # N's per 100 kbp =  0.00
+    3  Megahit_Dryas_octopetala_250_depth, N50 = 76937, L50 = 1, auN = 67766.7, Total length = 131857, GC % = 35.25, # N's per 100 kbp =  0.00
+    4  Megahit_Dryas_octopetala_100_depth, N50 = 76946, L50 = 1, auN = 60935.5, Total length = 131925, GC % = 35.25, # N's per 100 kbp =  0.00
+    5  Megahit_Dryas_octopetala_50_depth, N50 = 76928, L50 = 1, auN = 60929.8, Total length = 131891, GC % = 35.25, # N's per 100 kbp =  0.00
+    6  Megahit_Dryas_octopetala_20_depth, N50 = 1985, L50 = 13, auN = 7985.7, Total length = 122344, GC % = 35.44, # N's per 100 kbp =  0.00
+    7  Megahit_Dryas_octopetala_10_depth, N50 = 927, L50 = 10, auN = 1322.3, Total length = 30906, GC % = 40.56, # N's per 100 kbp =  0.00
+    8  Megahit_Dryas_octopetala_5_depth, N50 = 576, L50 = 2, auN = 621.8, Total length = 1827, GC % = 42.15, # N's per 100 kbp =  0.00
+Done.
+
+2025-02-17 15:45:43
+Running Contig analyzer...
+  2  Megahit_Dryas_octopetala_500_depth
+  2  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_500_depth.stdout and contigs_report_Megahit_Dryas_octopetala_500_depth.stderr...
+  2  Aligning contigs to the reference
+  3  Megahit_Dryas_octopetala_250_depth
+  3  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_250_depth.stdout and contigs_report_Megahit_Dryas_octopetala_250_depth.stderr...
+  3  Aligning contigs to the reference
+  2  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_500_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_500_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_500_depth.stderr
+  3  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_250_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_250_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_250_depth.stderr
+  4  Megahit_Dryas_octopetala_100_depth
+  4  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_100_depth.stdout and contigs_report_Megahit_Dryas_octopetala_100_depth.stderr...
+  4  Aligning contigs to the reference
+  1  Megahit_Dryas_octopetala_1000_depth
+  1  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_1000_depth.stdout and contigs_report_Megahit_Dryas_octopetala_1000_depth.stderr...
+  1  Aligning contigs to the reference
+  4  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_100_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_100_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_100_depth.stderr
+  1  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_1000_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_1000_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_1000_depth.stderr
+  4  Analysis is finished.
+
+  5  Megahit_Dryas_octopetala_50_depth
+  5  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_50_depth.stdout and contigs_report_Megahit_Dryas_octopetala_50_depth.stderr...
+  5  Aligning contigs to the reference
+  3  Analysis is finished.
+
+  6  Megahit_Dryas_octopetala_20_depth
+  6  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_20_depth.stdout and contigs_report_Megahit_Dryas_octopetala_20_depth.stderr...
+  6  Aligning contigs to the reference
+  5  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_50_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_50_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_50_depth.stderr
+  6  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_20_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_20_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_20_depth.stderr
+  1  Analysis is finished.
+
+  7  Megahit_Dryas_octopetala_10_depth
+  7  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_10_depth.stdout and contigs_report_Megahit_Dryas_octopetala_10_depth.stderr...
+  7  Aligning contigs to the reference
+  7  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_10_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_10_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_10_depth.stderr
+  2  Analysis is finished.
+
+  8  Megahit_Dryas_octopetala_5_depth
+  8  Logging to files /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_5_depth.stdout and contigs_report_Megahit_Dryas_octopetala_5_depth.stderr...
+  8  Aligning contigs to the reference
+  8  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 Megahit_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     Megahit_Dryas_octopetala_quast/quast_corrected_input/Megahit_Dryas_octopetala_5_depth.fa \
+     > Megahit_Dryas_octopetala_quast/contigs_reports/minimap_output/Megahit_Dryas_octopetala_5_depth.coords_tmp \
+     2>> Megahit_Dryas_octopetala_quast/contigs_reports/contigs_report_Megahit_Dryas_octopetala_5_depth.stderr
+  8  Analysis is finished.
+
+  7  Analysis is finished.
+
+  6  Analysis is finished.
+
+  5  Analysis is finished.
+
+  Creating total report...
+    saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2025-02-17 15:45:44
+Running NA-NGA calculation...
+  1  Megahit_Dryas_octopetala_1000_depth, Largest alignment = 76937, NA50 = 76937, NGA50 = 44909, LA50 = 1, LGA50 = 2
+  2  Megahit_Dryas_octopetala_500_depth, Largest alignment = 76951, NA50 = 76951, NGA50 = 44909, LA50 = 1, LGA50 = 2
+  3  Megahit_Dryas_octopetala_250_depth, Largest alignment = 76937, NA50 = 76937, NGA50 = 54920, LA50 = 1, LGA50 = 2
+  4  Megahit_Dryas_octopetala_100_depth, Largest alignment = 76946, NA50 = 76946, NGA50 = 44909, LA50 = 1, LGA50 = 2
+  5  Megahit_Dryas_octopetala_50_depth, Largest alignment = 76928, NA50 = 76928, NGA50 = 44913, LA50 = 1, LGA50 = 2
+  6  Megahit_Dryas_octopetala_20_depth, Largest alignment = 28213, NA50 = 1984, NGA50 = 1529, LA50 = 13, LGA50 = 23
+  7  Megahit_Dryas_octopetala_10_depth, Largest alignment = 2749, NA50 = 926, LA50 = 10
+  8  Megahit_Dryas_octopetala_5_depth, Largest alignment = 728, NA50 = 576, LA50 = 2
+Done.
+
+2025-02-17 15:45:44
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  Megahit_Dryas_octopetala_1000_depth
+  2  Megahit_Dryas_octopetala_500_depth
+  3  Megahit_Dryas_octopetala_250_depth
+  4  Megahit_Dryas_octopetala_100_depth
+  1  Analysis is finished.
+  5  Megahit_Dryas_octopetala_50_depth
+  4  Analysis is finished.
+  6  Megahit_Dryas_octopetala_20_depth
+  2  Analysis is finished.
+  7  Megahit_Dryas_octopetala_10_depth
+  3  Analysis is finished.
+  8  Megahit_Dryas_octopetala_5_depth
+  5  Analysis is finished.
+  8  Analysis is finished.
+  7  Analysis is finished.
+  6  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-02-17 15:45:44
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2025-02-17 15:45:44
+RESULTS:
+  Text versions of total report are saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/report.html
+  Icarus (contig browser) is saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/icarus.html
+  Log is saved to /home/augustthomasen/SIM/Megahit_Dryas_octopetala_quast/quast.log
+
+Finished: 2025-02-17 15:45:44
+Elapsed time: 0:00:00.567166
+NOTICEs: 4; WARNINGs: 2; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

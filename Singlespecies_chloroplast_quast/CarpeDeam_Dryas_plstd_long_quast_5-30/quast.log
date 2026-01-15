@@ -1,0 +1,147 @@
+/home/augustthomasen/miniconda3/envs/PUKenv/bin/quast.py CarpeDeam_Dryas_octopetala_long_5_depth.fasta CarpeDeam_Dryas_octopetala_long_10_depth.fasta CarpeDeam_Dryas_octopetala_long_15_depth.fasta CarpeDeam_Dryas_octopetala_long_20_depth.fasta CarpeDeam_Dryas_octopetala_long_30_depth.fasta -r Dryas_octopetala_plstd.fasta -o CarpeDeam_Dryas_plstd_long_quast_5-30
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35 (linux_64)
+  Python version: 3.9.0
+  CPUs number: 16
+
+Started: 2025-10-29 15:10:05
+
+Logging to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /home/augustthomasen/SIM
+Main parameters: 
+  MODE: default, threads: 4, min contig length: 500, min alignment length: 65, min alignment IDY: 95.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Reference:
+  /home/augustthomasen/SIM/Dryas_octopetala_plstd.fasta ==> Dryas_octopetala_plstd
+
+Contigs:
+  Pre-processing...
+WARNING: Skipping CarpeDeam_Dryas_octopetala_long_5_depth because it doesn't contain contigs >= 500 bp.
+
+  2  CarpeDeam_Dryas_octopetala_long_10_depth.fasta ==> CarpeDeam_Dryas_octopetala_long_10_depth
+  3  CarpeDeam_Dryas_octopetala_long_15_depth.fasta ==> CarpeDeam_Dryas_octopetala_long_15_depth
+  4  CarpeDeam_Dryas_octopetala_long_20_depth.fasta ==> CarpeDeam_Dryas_octopetala_long_20_depth
+  5  CarpeDeam_Dryas_octopetala_long_30_depth.fasta ==> CarpeDeam_Dryas_octopetala_long_30_depth
+
+2025-10-29 15:10:05
+Running Basic statistics processor...
+  Reference genome:
+    Dryas_octopetala_plstd.fasta, length = 158178, num fragments = 1, GC % = 36.48
+  Contig files: 
+    1  CarpeDeam_Dryas_octopetala_long_10_depth
+    2  CarpeDeam_Dryas_octopetala_long_15_depth
+    3  CarpeDeam_Dryas_octopetala_long_20_depth
+    4  CarpeDeam_Dryas_octopetala_long_30_depth
+  Calculating N50 and L50...
+    1  CarpeDeam_Dryas_octopetala_long_10_depth, N50 = 588, L50 = 9, auN = 649.0, Total length = 11736, GC % = 37.30, # N's per 100 kbp =  0.00
+    2  CarpeDeam_Dryas_octopetala_long_15_depth, N50 = 942, L50 = 17, auN = 1119.7, Total length = 48911, GC % = 37.05, # N's per 100 kbp =  0.00
+    3  CarpeDeam_Dryas_octopetala_long_20_depth, N50 = 1000, L50 = 30, auN = 1514.8, Total length = 108444, GC % = 35.83, # N's per 100 kbp =  0.00
+    4  CarpeDeam_Dryas_octopetala_long_30_depth, N50 = 1461, L50 = 45, auN = 1586.1, Total length = 180126, GC % = 35.50, # N's per 100 kbp =  0.00
+Done.
+
+2025-10-29 15:10:05
+Running Contig analyzer...
+  1  CarpeDeam_Dryas_octopetala_long_10_depth
+  1  Logging to files /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_10_depth.stdout and contigs_report_CarpeDeam_Dryas_octopetala_long_10_depth.stderr...
+  2  CarpeDeam_Dryas_octopetala_long_15_depth
+  3  CarpeDeam_Dryas_octopetala_long_20_depth
+  4  CarpeDeam_Dryas_octopetala_long_30_depth
+  1  Aligning contigs to the reference
+  3  Logging to files /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_20_depth.stdout and contigs_report_CarpeDeam_Dryas_octopetala_long_20_depth.stderr...
+  4  Logging to files /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_30_depth.stdout and contigs_report_CarpeDeam_Dryas_octopetala_long_30_depth.stderr...
+  2  Logging to files /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_15_depth.stdout and contigs_report_CarpeDeam_Dryas_octopetala_long_15_depth.stderr...
+  2  Aligning contigs to the reference
+  3  Aligning contigs to the reference
+  4  Aligning contigs to the reference
+  2  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/Dryas_octopetala_plstd.fasta \
+     CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/CarpeDeam_Dryas_octopetala_long_15_depth.fasta \
+     > CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/minimap_output/CarpeDeam_Dryas_octopetala_long_15_depth.coords_tmp \
+     2>> CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_15_depth.stderr
+  3  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/Dryas_octopetala_plstd.fasta \
+     CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/CarpeDeam_Dryas_octopetala_long_20_depth.fasta \
+     > CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/minimap_output/CarpeDeam_Dryas_octopetala_long_20_depth.coords_tmp \
+     2>> CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_20_depth.stderr
+  1  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/Dryas_octopetala_plstd.fasta \
+     CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/CarpeDeam_Dryas_octopetala_long_10_depth.fasta \
+     > CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/minimap_output/CarpeDeam_Dryas_octopetala_long_10_depth.coords_tmp \
+     2>> CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_10_depth.stderr
+  4  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/Dryas_octopetala_plstd.fasta \
+     CarpeDeam_Dryas_plstd_long_quast_5-30/quast_corrected_input/CarpeDeam_Dryas_octopetala_long_30_depth.fasta \
+     > CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/minimap_output/CarpeDeam_Dryas_octopetala_long_30_depth.coords_tmp \
+     2>> CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/contigs_report_CarpeDeam_Dryas_octopetala_long_30_depth.stderr
+  1  Analysis is finished.
+
+  2  Analysis is finished.
+
+  3  Analysis is finished.
+
+  4  Analysis is finished.
+
+  Creating total report...
+    saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2025-10-29 15:10:06
+Running NA-NGA calculation...
+  1  CarpeDeam_Dryas_octopetala_long_10_depth, Largest alignment = 1001, NA50 = 586, LA50 = 9
+  2  CarpeDeam_Dryas_octopetala_long_15_depth, Largest alignment = 2434, NA50 = 940, LA50 = 17
+  3  CarpeDeam_Dryas_octopetala_long_20_depth, Largest alignment = 4150, NA50 = 993, NGA50 = 749, LA50 = 30, LGA50 = 59
+  4  CarpeDeam_Dryas_octopetala_long_30_depth, Largest alignment = 3376, NA50 = 1447, NGA50 = 1504, LA50 = 45, LGA50 = 38
+Done.
+
+2025-10-29 15:10:06
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  CarpeDeam_Dryas_octopetala_long_10_depth
+  2  CarpeDeam_Dryas_octopetala_long_15_depth
+  3  CarpeDeam_Dryas_octopetala_long_20_depth
+  4  CarpeDeam_Dryas_octopetala_long_30_depth
+  3  Analysis is finished.
+  1  Analysis is finished.
+  2  Analysis is finished.
+  4  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-10-29 15:10:06
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2025-10-29 15:10:06
+RESULTS:
+  Text versions of total report are saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/report.html
+  Icarus (contig browser) is saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/icarus.html
+  Log is saved to /home/augustthomasen/SIM/CarpeDeam_Dryas_plstd_long_quast_5-30/quast.log
+
+Finished: 2025-10-29 15:10:06
+Elapsed time: 0:00:01.178502
+NOTICEs: 4; WARNINGs: 2; non-fatal ERRORs: 0
+
+Thank you for using QUAST!

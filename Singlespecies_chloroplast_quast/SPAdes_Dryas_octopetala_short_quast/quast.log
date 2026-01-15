@@ -1,0 +1,179 @@
+/home/augustthomasen/miniconda3/envs/PUKenv/bin/quast.py SPAdes_Dryas_octopetala_1000_depth.fasta SPAdes_Dryas_octopetala_500_depth.fasta SPAdes_Dryas_octopetala_250_depth.fasta SPAdes_Dryas_octopetala_100_depth.fasta SPAdes_Dryas_octopetala_50_depth.fasta SPAdes_Dryas_octopetala_20_depth.fasta -r Dryas_octopetala.fasta -o SPAdes_Dryas_octopetala_quast
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35 (linux_64)
+  Python version: 3.9.0
+  CPUs number: 16
+
+Started: 2025-02-17 15:37:28
+
+Logging to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /home/augustthomasen/SIM
+Main parameters: 
+  MODE: default, threads: 4, min contig length: 500, min alignment length: 65, min alignment IDY: 95.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+WARNING: Can't draw plots: python-matplotlib is missing or corrupted.
+
+Reference:
+  /home/augustthomasen/SIM/Dryas_octopetala.fasta ==> Dryas_octopetala
+
+Contigs:
+  Pre-processing...
+  1  SPAdes_Dryas_octopetala_1000_depth.fasta ==> SPAdes_Dryas_octopetala_1000_depth
+  2  SPAdes_Dryas_octopetala_500_depth.fasta ==> SPAdes_Dryas_octopetala_500_depth
+  3  SPAdes_Dryas_octopetala_250_depth.fasta ==> SPAdes_Dryas_octopetala_250_depth
+  4  SPAdes_Dryas_octopetala_100_depth.fasta ==> SPAdes_Dryas_octopetala_100_depth
+  5  SPAdes_Dryas_octopetala_50_depth.fasta ==> SPAdes_Dryas_octopetala_50_depth
+  6  SPAdes_Dryas_octopetala_20_depth.fasta ==> SPAdes_Dryas_octopetala_20_depth
+
+2025-02-17 15:37:29
+Running Basic statistics processor...
+  Reference genome:
+    Dryas_octopetala.fasta, length = 158178, num fragments = 1, GC % = 36.48
+  Contig files: 
+    1  SPAdes_Dryas_octopetala_1000_depth
+    2  SPAdes_Dryas_octopetala_500_depth
+    3  SPAdes_Dryas_octopetala_250_depth
+    4  SPAdes_Dryas_octopetala_100_depth
+    5  SPAdes_Dryas_octopetala_50_depth
+    6  SPAdes_Dryas_octopetala_20_depth
+  Calculating N50 and L50...
+    1  SPAdes_Dryas_octopetala_1000_depth, N50 = 1241, L50 = 30, auN = 1461.3, Total length = 108060, GC % = 33.66, # N's per 100 kbp =  0.00
+    2  SPAdes_Dryas_octopetala_500_depth, N50 = 637, L50 = 14, auN = 676.5, Total length = 21352, GC % = 30.48, # N's per 100 kbp =  0.00
+    3  SPAdes_Dryas_octopetala_250_depth, N50 = 1067, L50 = 34, auN = 1308.8, Total length = 110647, GC % = 34.44, # N's per 100 kbp =  0.00
+    4  SPAdes_Dryas_octopetala_100_depth, N50 = 4646, L50 = 11, auN = 4437.7, Total length = 129799, GC % = 35.18, # N's per 100 kbp =  0.00
+    5  SPAdes_Dryas_octopetala_50_depth, N50 = 7277, L50 = 7, auN = 7882.6, Total length = 131747, GC % = 35.23, # N's per 100 kbp =  0.00
+    6  SPAdes_Dryas_octopetala_20_depth, N50 = 1547, L50 = 18, auN = 3812.8, Total length = 118794, GC % = 35.48, # N's per 100 kbp =  0.00
+Done.
+
+2025-02-17 15:37:29
+Running Contig analyzer...
+  1  SPAdes_Dryas_octopetala_1000_depth
+  2  SPAdes_Dryas_octopetala_500_depth
+  3  SPAdes_Dryas_octopetala_250_depth
+  1  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_1000_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_1000_depth.stderr...
+  1  Aligning contigs to the reference
+  4  SPAdes_Dryas_octopetala_100_depth
+  3  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_250_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_250_depth.stderr...
+  4  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_100_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_100_depth.stderr...
+  4  Aligning contigs to the reference
+  3  Aligning contigs to the reference
+  2  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_500_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_500_depth.stderr...
+  4  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_100_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_100_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_100_depth.stderr
+  1  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_1000_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_1000_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_1000_depth.stderr
+  2  Aligning contigs to the reference
+  2  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_500_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_500_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_500_depth.stderr
+  3  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_250_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_250_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_250_depth.stderr
+  2  Analysis is finished.
+
+  5  SPAdes_Dryas_octopetala_50_depth
+  5  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_50_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_50_depth.stderr...
+  5  Aligning contigs to the reference
+  5  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_50_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_50_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_50_depth.stderr
+  1  Analysis is finished.
+
+  6  SPAdes_Dryas_octopetala_20_depth
+  6  Logging to files /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_20_depth.stdout and contigs_report_SPAdes_Dryas_octopetala_20_depth.stderr...
+  6  Aligning contigs to the reference
+  6  /home/augustthomasen/miniconda3/envs/PUKenv/lib/python3.9/site-packages/quast_libs/minimap2/minimap2 \
+     -c -x asm10 -B5 -O4,16 --no-long-join -r 200 -N 50 -s 65 -z 200 --mask-level \
+     0.9 --min-occ 200 -g 2500 --score-N 2 --cs -t 1 SPAdes_Dryas_octopetala_quast/quast_corrected_input/Dryas_octopetala.fasta \
+     SPAdes_Dryas_octopetala_quast/quast_corrected_input/SPAdes_Dryas_octopetala_20_depth.fasta \
+     > SPAdes_Dryas_octopetala_quast/contigs_reports/minimap_output/SPAdes_Dryas_octopetala_20_depth.coords_tmp \
+     2>> SPAdes_Dryas_octopetala_quast/contigs_reports/contigs_report_SPAdes_Dryas_octopetala_20_depth.stderr
+  3  Analysis is finished.
+
+  4  Analysis is finished.
+
+  5  Analysis is finished.
+
+  6  Analysis is finished.
+
+  Creating total report...
+    saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+Done.
+
+2025-02-17 15:37:29
+Running NA-NGA calculation...
+  1  SPAdes_Dryas_octopetala_1000_depth, Largest alignment = 3477, NA50 = 1241, NGA50 = 907, LA50 = 30, LGA50 = 54
+  2  SPAdes_Dryas_octopetala_500_depth, Largest alignment = 1128, NA50 = 637, LA50 = 14
+  3  SPAdes_Dryas_octopetala_250_depth, Largest alignment = 3481, NA50 = 1067, NGA50 = 799, LA50 = 34, LGA50 = 59
+  4  SPAdes_Dryas_octopetala_100_depth, Largest alignment = 9415, NA50 = 4644, NGA50 = 3832, LA50 = 11, LGA50 = 15
+  5  SPAdes_Dryas_octopetala_50_depth, Largest alignment = 15288, NA50 = 7275, NGA50 = 4902, LA50 = 7, LGA50 = 9
+  6  SPAdes_Dryas_octopetala_20_depth, Largest alignment = 14393, NA50 = 1545, NGA50 = 1156, LA50 = 18, LGA50 = 33
+Done.
+
+2025-02-17 15:37:29
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  1  SPAdes_Dryas_octopetala_1000_depth
+  2  SPAdes_Dryas_octopetala_500_depth
+  3  SPAdes_Dryas_octopetala_250_depth
+  4  SPAdes_Dryas_octopetala_100_depth
+  2  Analysis is finished.
+  5  SPAdes_Dryas_octopetala_50_depth
+  4  Analysis is finished.
+  3  Analysis is finished.
+  6  SPAdes_Dryas_octopetala_20_depth
+  1  Analysis is finished.
+  5  Analysis is finished.
+  6  Analysis is finished.
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2025-02-17 15:37:29
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 1: Creating Icarus viewers...
+Done
+
+2025-02-17 15:37:29
+RESULTS:
+  Text versions of total report are saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/report.html
+  Icarus (contig browser) is saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/icarus.html
+  Log is saved to /home/augustthomasen/SIM/SPAdes_Dryas_octopetala_quast/quast.log
+
+Finished: 2025-02-17 15:37:29
+Elapsed time: 0:00:00.634577
+NOTICEs: 4; WARNINGs: 2; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
