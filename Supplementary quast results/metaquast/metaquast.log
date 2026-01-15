@@ -1,0 +1,124 @@
+/home/augustthomasen/miniconda3/envs/PUKenv/bin/metaquast.py Plantmix_megahit/megahit_ancient_contigs.fa Plantmix_mdrn_megahit/megahit_modern_contigs.fa Plantmix_metaspades/metaspades_ancient_contigs.fasta Plantmix_mdrn_metaspades/metaspades_modern_contigs.fasta Plantmix_ancient_carpedeam.fasta Plantmix_modern_carpedeam.fasta -r Dryas_octopetala_plstd.fasta,Betula_nana_plstd.fasta,Populus_alba_plstd.fasta,Crataegus_laevigata_plstd.fasta,Vaccinium_vitis-idaea_plstd.fasta,Carex_divulsa_plstd.fasta,Carex_pendula_plstd.fasta,Salix_dunnii_plstd.fasta -o Plantmix_mdrn_compare
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35 (linux_64)
+  Python version: 3.9.0
+  CPUs number: 16
+
+Started: 2025-05-07 14:48:54
+
+Logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/metaquast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+Reference(s):
+  Dryas_octopetala_plstd.fasta ==> Dryas_octopetala_plstd
+  Betula_nana_plstd.fasta ==> Betula_nana_plstd
+  Populus_alba_plstd.fasta ==> Populus_alba_plstd
+  Crataegus_laevigata_plstd.fasta ==> Crataegus_laevigata_plstd
+  Vaccinium_vitis-idaea_plstd.fasta ==> Vaccinium_vitis-idaea_plstd
+  Carex_divulsa_plstd.fasta ==> Carex_divulsa_plstd
+  Carex_pendula_plstd.fasta ==> Carex_pendula_plstd
+  Salix_dunnii_plstd.fasta ==> Salix_dunnii_plstd
+  All references were combined in combined_reference.fasta
+
+Contigs:
+  Pre-processing...
+  1  Plantmix_megahit/megahit_ancient_contigs.fa ==> megahit_ancient_contigs
+  2  Plantmix_mdrn_megahit/megahit_modern_contigs.fa ==> megahit_modern_contigs
+  3  Plantmix_metaspades/metaspades_ancient_contigs.fasta ==> metaspades_ancient_contigs
+  4  Plantmix_mdrn_metaspades/metaspades_modern_contigs.fasta ==> metaspades_modern_contigs
+  5  Plantmix_ancient_carpedeam.fasta ==> Plantmix_ancient_carpedeam
+  6  Plantmix_modern_carpedeam.fasta ==> Plantmix_modern_carpedeam
+
+Starting quast.py for the combined reference...
+(logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/combined_reference/quast.log)
+
+Partitioning contigs into bins aligned to each reference..
+  processing megahit_ancient_contigs
+  processing megahit_modern_contigs
+  processing metaspades_ancient_contigs
+  processing metaspades_modern_contigs
+  processing Plantmix_ancient_carpedeam
+  processing Plantmix_modern_carpedeam
+
+Starting quast.py for the contigs aligned to Dryas_octopetala_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Dryas_octopetala_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Betula_nana_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Betula_nana_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Populus_alba_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Populus_alba_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Crataegus_laevigata_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Crataegus_laevigata_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Vaccinium_vitis-idaea_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Vaccinium_vitis-idaea_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Carex_divulsa_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Carex_divulsa_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Carex_pendula_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Carex_pendula_plstd/quast.log)
+
+Starting quast.py for the contigs aligned to Salix_dunnii_plstd... (logging to /home/augustthomasen/SIM/Plantmix_mdrn_compare/runs_per_reference/Salix_dunnii_plstd/quast.log)
+
+Skipping quast.py for the contigs not aligned anywhere (everything is aligned!)
+
+2025-05-07 14:49:45
+Summarizing results...
+  Drawing # contigs metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/num_contigs.pdf
+  Drawing Largest contig metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Largest_contig.pdf
+  Drawing Total length metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Total_length.pdf
+  Drawing Largest alignment metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Largest_alignment.pdf
+  Drawing Total aligned length metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Total_aligned_length.pdf
+  Drawing Total length (>= 1000 bp) metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Total_length_(ge_1000_bp).pdf
+  Drawing Total length (>= 10000 bp) metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Total_length_(ge_10000_bp).pdf
+  Drawing Total length (>= 50000 bp) metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Total_length_(ge_50000_bp).pdf
+  Drawing # misassemblies metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/num_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for megahit_ancient_contigs...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/megahit_ancient_contigs_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for megahit_modern_contigs...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/megahit_modern_contigs_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for metaspades_ancient_contigs...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/metaspades_ancient_contigs_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for metaspades_modern_contigs...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/metaspades_modern_contigs_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for Plantmix_ancient_carpedeam...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Plantmix_ancient_carpedeam_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for Plantmix_modern_carpedeam...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Plantmix_modern_carpedeam_misassemblies.pdf
+  Drawing Misassembled contigs length metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Misassembled_contigs_length.pdf
+  Drawing # mismatches per 100 kbp metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/num_mismatches_per_100_kbp.pdf
+  Drawing # indels per 100 kbp metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/num_indels_per_100_kbp.pdf
+  Drawing # N's per 100 kbp metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/num_Ns_per_100_kbp.pdf
+  Drawing Genome fraction (%) metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Genome_fraction.pdf
+  Drawing Duplication ratio metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/Duplication_ratio.pdf
+  Drawing NGA50 metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/NGA50.pdf
+  Drawing LGA50 metaQUAST summary plot...
+    saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/PDF/LGA50.pdf
+
+  Text versions of reports and plots for each metric (for all references and assemblies) are saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/summary/
+  Icarus (contig browser) is saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/icarus.html
+  Extended version of HTML-report (for all references and assemblies) is saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/report.html
+
+MetaQUAST finished.
+  Log is saved to /home/augustthomasen/SIM/Plantmix_mdrn_compare/metaquast.log
+
+Finished: 2025-05-07 14:49:50
+Elapsed time: 0:00:56.618097
+Total NOTICEs: 20; WARNINGs: 9; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
