@@ -1,9 +1,0 @@
-Assemblies                   megahit_ancient_contigs  megahit_modern_contigs  spades_ancient_contigs  spades_mdrn_contigs  Plantmix_ancient_carpedeam  Plantmix_modern_carpedeam
-Dryas_octopetala_plstd       58764                    55894                   50386                   60277                53756                       365040                   
-Betula_nana_plstd            61531                    64691                   42367                   53271                44237                       356196                   
-Populus_alba_plstd           36510                    33621                   24949                   34675                19214                       328197                   
-Crataegus_laevigata_plstd    9516                     8391                    7696                    9121                 7375                        58759                    
-Vaccinium_vitis-idaea_plstd  13098                    13671                   8672                    9270                 1679                        52777                    
-Carex_divulsa_plstd          26026                    30183                   21525                   27756                -                           72098                    
-Carex_pendula_plstd          7048                     6802                    1797                    3705                 -                           44525                    
-Salix_dunnii_plstd           20240                    15769                   9684                    11781                11932                       223139                   
