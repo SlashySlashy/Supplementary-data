@@ -1,0 +1,122 @@
+---
+title: "Plastid_ratios"
+output: html_document
+date: "2025-08-28"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(tidyverse)
+library(ggpmisc)
+```
+
+```{r}
+#read file with read numbers and plastid ratios
+Ratio <- read_tsv("plastid_ratio.tsv")
+head(Ratio)
+```
+
+```{r}
+#create density plot for plastid ratios
+ggplot(Ratio, aes(Chloroplast_to_Viridiplantae_ratio)) + 
+  geom_density() +
+  scale_x_continuous(trans='log10') +
+  xlab("Ratio of Chloroplast to Viridiplantae reads") +
+  ylab("Density") +
+  theme_bw()
+```
+
+```{r}
+#create scatter plot with viridiplantae reads and chloroplast reads. Dots colored by read ratios. Axis and colors are log10 transformed.
+ggplot(Ratio, aes(x = Competitively_Mapped_Viridiplantae_Reads, y = Chloroplast_Mapped_Reads, color = Chloroplast_to_Viridiplantae_ratio)) + 
+  geom_point() +
+  scale_colour_gradientn(colours=rainbow(4), trans = "log10") +
+  scale_x_continuous(trans='log10') +
+  scale_y_continuous(trans='log10') +
+  xlab("Reads competitively mapped to Viridiplantae") +
+  ylab("Reads mapped to chloroplast reference") +
+  theme_bw()
+
+```
+
+```{r}
+#Discard reads below 1000000 competitively mapped, due to outliers and more varied distribution below this. Runs a linear regression for the model
+filRatio <- Ratio %>% filter(Competitively_Mapped_Viridiplantae_Reads >= 1000000)
+model <- lm(Chloroplast_Mapped_Reads~Competitively_Mapped_Viridiplantae_Reads + 0, data = filRatio)
+summary(model)
+slope <- coef(summary(model))[1, 1]
+```
+
+```{r}
+#create a scatter plot for viridiplantae and chloroplast reads with a linear regression slope
+ggplot(filRatio, aes(x = Competitively_Mapped_Viridiplantae_Reads, y = Chloroplast_Mapped_Reads)) + 
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x + 0) +
+  scale_x_log10() +
+  scale_y_log10() +
+  annotate("text", x = 1.4*min(filRatio$Competitively_Mapped_Viridiplantae_Reads), y = 0.8*max(filRatio$Chloroplast_Mapped_Reads), 
+           label = paste0("y = ", round(slope, 5),"x")) +
+  xlab("Reads competitively mapped to Viridiplantae") +
+  ylab("Reads mapped to chloroplast reference") +
+  theme_bw()
+```
+
+```{r}
+#read dates of samples
+Dates <- read_csv("Plastid_metaData.txt")
+head(Dates)
+```
+
+```{r}
+#appends sample dates to sample ratios file and arranges by descending order of ratio
+Ratio2 <- Ratio %>% mutate(CGG_ID = str_split_fixed(Sample, "_", 2)[, 1])
+RatioDates <- left_join(Ratio2, Dates)
+RatioDates %>% arrange(desc(Chloroplast_to_Viridiplantae_ratio))
+head(RatioDates)
+```
+
+```{r}
+#scatter plot of the read ratios over time
+ggplot(RatioDates, aes(y=Chloroplast_to_Viridiplantae_ratio, x=Date)) + 
+  geom_point() +
+  xlab("Date") +
+  ylab("Ratio of Chloroplast to Viridiplantae reads") +
+  theme_bw()
+```
+
+
+```{r}
+#calculates the ratio of photosynthetic taxa in each sample
+Photo <- read_tsv("photo_tjornin_test_C.txt") %>% replace(is.na(.), 0)
+Photo <- left_join(Photo, Dates)
+Photoratio <- Photo %>% mutate("sum" = Viridiplantae+Rhodophyta+Ochrophyta+Cyanobacteriota,
+                 "Viridiplantae" = Viridiplantae/sum,
+                 "Rhodophyta" = Rhodophyta/sum, 
+                 "Ochrophyta" = Ochrophyta/sum,
+                 "Cyanobacteriota" = Cyanobacteriota/sum) %>% select(-sum)
+```
+
+
+```{r}
+#pivot the table
+Longphoto <- Photo %>% pivot_longer(cols = 2:5, names_to = "Group")
+Longphoto
+Longphotoratio <- Photoratio %>% pivot_longer(cols = 2:5, names_to = "Group")
+Longphotoratio
+```
+
+
+```{r}
+#plots the ratios of different photosynthetic taxa over time
+ggplot(Longphotoratio, aes(y=value, x=Date, color=Group)) + 
+  geom_line() +
+  xlab("Date") +
+  ylab("Ratio of reads") +
+  theme_bw()
+```
+

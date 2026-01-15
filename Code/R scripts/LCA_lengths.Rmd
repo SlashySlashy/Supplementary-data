@@ -1,0 +1,62 @@
+---
+title: "LCA_lengths"
+output: html_document
+date: "2025-11-14"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(taxizedb)
+```
+
+```{r}
+#read contig lengths with LCA and the species used in simulation
+LCA_leng <- read_table("Lengths/megahit_long_1mil_minimap2.lengths", col_names = c("lengths", "taxid", "level"))
+SIMspecies <- read_table("Viridiplantae_species_119_B3_116_L1_KapK-12-1-41_referenced.txt")
+head(LCA_leng)
+
+#retai only genus, family, species, or kingdom level lcas
+LCA_leng_filt <- LCA_leng %>% filter(level == "genus"| level =="family" | level =="species" | level == "kingdom" )
+head(LCA_leng_filt)
+```
+
+```{r}
+#add scientific name of taxons
+LCA_leng_filt$taxon <- taxid2name(LCA_leng_filt$taxid)
+#for species, add a true tag if the taxid is one used to simulate reads, else add a false tag. Add no tag if not species
+LCA_leng_filt$SIMtaxid <- if_else(LCA_leng_filt$level=="species", LCA_leng_filt$taxid %in% SIMspecies$taxa_ID, NA)
+head(LCA_leng_filt)
+```
+
+
+```{r}
+#create plot with contig lengths for each lca level
+pdf(file = "Lengths/megahit_1mil_long_lengths3.pdf", width = 8, height = 7)
+LCA_leng_filt %>% ggplot(aes(x=level, y=lengths)) +
+  geom_violin() +
+  geom_jitter(shape=16, position=position_jitter(0.2)) +
+  scale_y_log10() +
+  ylab("contig length") +
+  xlab("taxonomic level") +
+  theme_bw()
+dev.off()
+```
+
+```{r}
+#create plot of species level contig lengths, divided by if the species is correctly assigned
+LCA_xtrafilt <- LCA_leng_filt %>% filter(level == "species")
+pdf(file = "Lengths/megahit_1mil_long_truefalse.pdf", width = 8, height = 7)
+LCA_xtrafilt %>% ggplot(aes(x=SIMtaxid, y=lengths, color=SIMtaxid)) +
+  geom_violin() +
+  geom_jitter(shape=16, position=position_jitter(0.2)) +
+  scale_y_log10() +
+  ylab("contig length") +
+  xlab("Correct LCA") +
+  theme_bw()
+dev.off()
+```
+

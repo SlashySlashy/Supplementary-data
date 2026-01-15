@@ -1,0 +1,165 @@
+---
+title: "Quast_vis_16_09"
+output: html_document
+date: "2025-09-23"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+#reads total length of aligned contigs from quast results
+Length <- read_tsv("16_09_Quast_TSV/Total_aligned_length.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#selects Dryas and Salix results only, and separates the assembly name into tags for the assembler, number of reads, and read length distribution
+fLength <- Length %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+head(fLength)
+```
+
+```{r}
+#plot aligned contig lengths as a grid of four barplots, with plots divided by read length distribution and number of reads, and the bars divided by assembler
+ggplot(fLength, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads, scales = "free_x") +
+  xlab("Aligned length (bp)") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads genome fraction metric from quast results
+Frac <- read_tsv("16_09_Quast_TSV/Genome_fraction.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fFrac <- Frac  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fFrac, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads) +
+  xlab("Genome fraction (%)") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads number of mismatches per 100 kbp from quast results
+Mismatch <- read_tsv("16_09_Quast_TSV/num_mismatches_per_100_kbp.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fMismatch <- Mismatch  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fMismatch, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads) +
+  xlab("Mismatches pr 100 kbp") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads number of misassemblies from quast results
+Misassem <- read_tsv("16_09_Quast_TSV/num_misassemblies.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fMisassem <- Misassem  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fMisassem, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads, scales = "free") +
+  xlab("Misassembled contigs") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads NGA50 metric from quast results
+NGA50 <- read_tsv("16_09_Quast_TSV/NGA50.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fNGA50 <- NGA50  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fNGA50, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads, scales = "free") +
+  xlab("NGA50") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads length of largest aligned contig from quast results
+Lcontig <- read_tsv("16_09_Quast_TSV/Largest_contig.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fLcontig <- Lcontig  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fLcontig, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads) +
+  xlab("Largest contig") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads number of aligned contigs from quast results
+Ncontig <- read_tsv("16_09_Quast_TSV/num_contigs.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+fNcontig <- Ncontig  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+```
+
+```{r}
+#see description of fLength plot
+ggplot(fNcontig, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads, scales = "free_x") +
+  xlab("No. of contigs") +
+  ylab("Reference") +
+  theme_bw()
+```
+
+```{r}
+#reads number of insertions and deletions per 100 kbp from quast results
+indels <- read_tsv("16_09_Quast_TSV/num_indels_per_100_kbp.tsv") %>% mutate(across(2:9, as.numeric)) %>% replace(is.na(.), 0) %>% rename("Reference" = Assemblies)
+
+#see description over fLength
+findels <- indels  %>% filter(grepl('Dryas|Salix', Reference)) %>% pivot_longer(cols = 2:9, names_to = "Assembly_type") %>% separate(Assembly_type, into = c("Assembler", "Sim_reads", "Frag_lengths"), sep = "_")
+```
+
+```{r}
+#see description of fLength plot
+ggplot(findels, aes(y = Reference, x = value, fill = Assembler)) + 
+  geom_col(position = "dodge") +  
+  facet_grid(Frag_lengths ~ Sim_reads) +
+  xlab("Indels per 100 kbp") +
+  ylab("Reference") +
+  theme_bw()
+```

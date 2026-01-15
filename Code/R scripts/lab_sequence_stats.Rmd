@@ -1,0 +1,66 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-11-24"
+---
+
+R code for calculating stats for macrofossil sequencing data
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+#reads LCA results from holi pipeline
+holi_data <- read_tsv("Smileyplots/metadmg_august_irene.tsv") %>% filter(grepl("August", label))
+colnames(holi_data)
+head(holi_data)
+```
+
+```{r}
+#Find the number of eukaryote reads
+total_reads <- holi_data %>% group_by(label) %>% summarize(eu_reads = max(nreads))
+#Adds the QC read numbers
+total_reads$total_reads <- c(5149379, 21800423, 3743636)
+total_reads
+```
+
+```{r}
+#Finds the top n most abundant species for each sample
+max_sp <- holi_data %>% group_by(label) %>% filter(rank == "species") %>% top_n(2, nreads) %>% arrange(desc(nreads)) %>% head(6) %>% ungroup()
+max_sp
+#Selects all LCA species for each sample
+all_sp <- holi_data  %>% filter(rank == "species")
+```
+
+
+
+```{r}
+#Calculate the fraction of endogenous reads and the fraction of species reads to overall eukaryote reads for each species in each samples
+fractions <- full_join(all_sp, total_reads, by = "label") %>% select(label, name, nreads, eu_reads,  total_reads) %>% mutate("species_eu_fraction" = nreads/eu_reads, "endogenous_fraction" = eu_reads/total_reads) %>% arrange(desc(species_eu_fraction))
+head(fractions, 10)
+```
+
+```{r}
+#Finds the top 5 most abundant species in each sample
+fractions_1 <- fractions %>% filter(label == "August-Seeds-1_S19") %>% select(name, nreads, species_eu_fraction) %>% rename("Species" = name, "Read count" = nreads, "Fraction of eukaryote reads" = species_eu_fraction) %>% head(5) %>% mutate_if(is.numeric, round, 4)
+fractions_2 <- fractions %>% filter(label == "August-Seeds-2_S20") %>% select(name, nreads, species_eu_fraction) %>% rename("Species" = name, "Read count" = nreads, "Fraction of eukaryote reads" = species_eu_fraction) %>% head(5) %>% mutate_if(is.numeric, round, 4)
+fractions_17 <- fractions %>% filter(label == "August-Seeds-17_S21") %>% select(name, nreads, species_eu_fraction) %>% rename("Species" = name, "Read count" = nreads, "Fraction of eukaryote reads" = species_eu_fraction) %>% head(5) %>% mutate_if(is.numeric, round, 4)
+```
+
+
+```{r}
+#Writes top five most abundant species in each sample to tsv files
+write.table(fractions_1, file='LCA_fractions_1.tsv', quote=FALSE, sep='\t', row.names = FALSE)
+write.table(fractions_2, file='LCA_fractions_2.tsv', quote=FALSE, sep='\t', row.names = FALSE)
+write.table(fractions_17, file='LCA_fractions_17.tsv', quote=FALSE, sep='\t', row.names = FALSE)
+
+```
+

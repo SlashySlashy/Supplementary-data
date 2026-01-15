@@ -1,0 +1,56 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+R scripts for visualizing length distributions and calculating mean length and cumulative lengths from .rlens files
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+rlens <- read_tsv("August-Seeds-17_S21.sortn.comp.rlens.gz")
+```
+
+```{r}
+head(rlens)
+```
+
+```{r}
+#transposes rlens file, giving the sum reads from all IDs
+rlens_sum <- rlens %>% summarise_all(sum) %>% select(-id) %>% rename_with(~ gsub("rlen", "", .x))
+rlens_sum <- as.data.frame(t(rlens_sum)) %>% rownames_to_column("Read_length")
+
+#calculates the cumulative percentage of reads for each bp length
+rlens_cumper <- rlens_sum %>% mutate(percent = cumsum(V1/sum(V1))) %>% select(-V1)
+head(rlens_cumper)
+```
+
+```{r}
+#Writes cumulative percent lengths to length distribution file for use in NGSNGS 
+write.table(rlens_cumper, file = 'leng_dist.txt', quote = FALSE, sep ='\t', col.names = FALSE)
+```
+
+
+
+```{r}
+#Visualizes read length distribution as bar plot
+rlens_sum$Read_length <- as.integer(rlens_sum$Read_length)
+rlens_sum <- rlens_sum %>%  rename(n_reads = V1)
+rlens_sum %>% ggplot(aes(y= n_reads,x=Read_length)) +
+  geom_col(width = 1) +
+  ggtitle("Read length distribution") +
+  theme_bw()
+```
+
+
+```{r}
+#calculate mean read length
+sum(rlens_sum$Read_length*rlens_sum$n_reads)/sum(rlens_sum$n_reads)
+```
+

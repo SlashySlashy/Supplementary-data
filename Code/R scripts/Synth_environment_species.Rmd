@@ -1,0 +1,72 @@
+---
+title: "Synth_environment_species"
+output: html_document
+date: "2025-09-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(forcats)
+```
+
+```{r}
+#species and aligned reads for Viridiplantae from KapK sample
+plants <- read_table("Viridiplantae_species_119_B3_116_L1_KapK-12-1-41_referenced.txt")%>% mutate(kingdom="viridiplantae") %>% rename("readcount" = "119_B3_116_L1_KapK-12-1-41")
+#species and aligned reads for Metazoa from KapK sample
+zoo <- read_table("Metazoa_species_119_B3_116_L1_KapK-12-1-41_referenced.txt")%>% mutate(kingdom="metazoa") %>% rename("readcount" = "119_B3_116_L1_KapK-12-1-41")
+
+head(zoo)
+head(plants)
+```
+
+```{r}
+#join viridiplantae and metazoa results
+plantzoo <- bind_rows(plants, zoo)
+```
+
+```{r, fig.height=6}
+#make a .png of bar plot for the number of reads for each species. Bars colored according to kingdom. Read count is log10 transformed on the x axis.
+png(filename = "KapK_species.png", width = 900, height = 600)
+ggplot(plantzoo, aes(y = fct_infreq(taxa_name, readcount), x = readcount, fill = kingdom)) + 
+  geom_col(width = 0.6, position = position_dodge(0.9)) +
+  xlab("No. reads") +
+  ylab("Species") +
+  scale_x_log10() +
+  #adjust size of text elements for readability
+  theme(axis.text.x = element_text(size=14, color = "black"),
+          axis.text.y = element_text(size=14, color = "black"),
+        axis.title=element_text(size=16,face="bold", color = "black"),
+        legend.title = element_text(size=16, face = "bold", color = "black"),
+        legend.text = element_text(size=16, color = "black"))
+dev.off()
+```
+
+
+```{r}
+#the read depths for each species in simulated metagenomic datasets, and add tags for read length distrubtion and total number of reads
+short1mil <- read_tsv("depths_of_coverage/ngsngs_test_depth.txt") %>% mutate("Length" = "short", "Readcount" = "1mil")
+short10mil <- read_tsv("depths_of_coverage/ngsngs10000000_depth.txt") %>% mutate("Length" = "short", "Readcount" = "10mil")
+long1mil <- read_tsv("depths_of_coverage/longreads1mil_depth.txt") %>% mutate("Length" = "long", "Readcount" = "1mil")
+long10mil <- read_tsv("depths_of_coverage/longreads10mil_depth.txt") %>% mutate("Length" = "long", "Readcount" = "10mil")
+```
+
+```{r}
+#join the read depths from different datasets
+joined <- full_join(short1mil, short10mil) %>% full_join(long1mil) %>% full_join(long10mil)
+```
+
+
+```{r}
+#selecting only the Dryas and Salix genomes, plot the simulated read depths as a grid of four bar plots, with plots divided by read length distribution and number of reads, and the bars divided by assembler
+joined %>% filter(grepl('Dryas|Salix', Reference)) %>%
+  ggplot(aes(y = Reference, x = Depth_of_coverage)) + 
+  geom_col(width = 0.6, position = position_dodge(0.9)) +
+  facet_grid(Length ~ Readcount, scales = "free") +
+  xlab("Depth") +
+  ylab("Species") +
+  theme_bw()
+```

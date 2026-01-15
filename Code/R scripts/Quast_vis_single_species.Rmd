@@ -1,0 +1,146 @@
+---
+title: "Quast_vis"
+output:
+  html_document: default
+  pdf_document: default
+date: "2025-03-07"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(sjmisc)
+```
+
+```{r}
+#reads the quast results for different assemblers and read length distributions
+
+SPAdes_long <- read_tsv("Spades_long_plstd.tsv")
+#rows to columns
+SPAdes_long <- rotate_df(SPAdes_long, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+SPAdes_long <- SPAdes_long %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "SPAdes", Length = "Long")
+
+Megahit_long <- read_tsv("Megahit_long_plstd.tsv")
+#rows to columns
+Megahit_long <- rotate_df(Megahit_long, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+Megahit_long <- Megahit_long %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "Megahit", Length = "Long")
+
+CarpeDeam_long <- read_tsv("CarpeDeam_long_plstd.tsv")
+#rows to columns
+CarpeDeam_long <- rotate_df(CarpeDeam_long, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+CarpeDeam_long <- CarpeDeam_long %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "CarpeDeam", Length = "Long")
+
+SPAdes_short <- read_tsv("Spades_plstd.tsv")
+#rows to columns
+SPAdes_short <- rotate_df(SPAdes_short, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+SPAdes_short <- SPAdes_short %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "SPAdes", Length = "Short")
+
+Megahit_short <- read_tsv("Megahit_plstd.tsv")
+#rows to columns
+Megahit_short <- rotate_df(Megahit_short, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+Megahit_short <- Megahit_short %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "Megahit", Length = "Short")
+
+CarpeDeam_short <- read_tsv("CarpeDeam_plstd.tsv")
+#rows to columns
+CarpeDeam_short <- rotate_df(CarpeDeam_short, cn = TRUE)
+#make columns numeric and add depth of coverage column and column with assembler name
+CarpeDeam_short <- CarpeDeam_short %>% mutate_if(is.character, as.numeric) %>% mutate(Depth = as.numeric(str_extract(row.names(.), "\\d+")), Assembler = "CarpeDeam", Length = "Short")
+```
+
+```{r}
+#joins the different quast results as single dataframe
+Joined <- rbind(SPAdes_long, Megahit_long, CarpeDeam_long, SPAdes_short, Megahit_short, CarpeDeam_short)
+```
+
+```{r} 
+#plots the number of contigs, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`# contigs (>= 0 bp)` ,x=as.factor(Depth), fill=Assembler )) +
+  facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+
+
+```{r}
+#plots the genome fraction statistic, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`Genome fraction (%)` ,x=as.factor(Depth), fill=Assembler )) +
+  facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+```{r}
+#plots bp length of the largest contig, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`Largest contig`,x=as.factor(Depth), fill=Assembler )) +
+  facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+```{r}
+#plots NG50 metric, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=NG50 ,x=as.factor(Depth), fill=Assembler )) +
+    facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+```{r}
+#plots the number of mismatches per 100 kbp, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`# mismatches per 100 kbp`,x=as.factor(Depth), fill=Assembler )) +
+    facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+```{r}
+#plots the number of misassembled contigs, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`# misassembled contigs`,x=as.factor(Depth), fill=Assembler )) +
+    facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  ylab("# misassembled contigs") +
+  theme_bw()
+
+```
+
+
+
+```{r}
+#plots the total length of misassembled contigs, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`Misassembled contigs length`,x=as.factor(Depth), fill=Assembler )) +
+    facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+
+```
+
+```{r}
+#plots the number of insertions and deletions per 100 kbp, with two plots divided by read length distribution
+Joined %>% ggplot(aes(y=`# indels per 100 kbp`,x=as.factor(Depth), fill=Assembler )) +
+    facet_wrap(~Length, scales = "free_x") +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0), width = 0.7) +
+  xlab("Read Depth") +
+  theme_bw()
+```
+

@@ -1,0 +1,31 @@
+---
+title: "SIM"
+output: html_document
+date: "2024-11-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+#read nucleotide mismatch table, and retain only C-T and G-A substitutions
+mismatch <- read.table("nucleotide_mismatch_table.txt", header = TRUE) %>% pivot_longer(cols = AA:TT, names_to = "Substitution", values_to = "Percent") %>% filter(Substitution == "CT" | Substitution =="GA")
+head(mismatch)
+```
+
+```{r}
+#plot substitution rates as two plots, one for 3' end and one for 5' end, with color for substitution type
+mismatch %>% ggplot(aes(y= Percent,x=Pos, colour = Substitution)) +
+  geom_line() +
+  facet_wrap(vars(Direction)) +
+  ggtitle("Deamination pattern") +
+  xlab("Position") +
+  theme_bw()
+```
+

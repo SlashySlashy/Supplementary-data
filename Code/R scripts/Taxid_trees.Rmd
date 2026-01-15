@@ -1,0 +1,86 @@
+---
+title: "Taxid_trees"
+output: html_document
+date: "2025-10-31"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggtree)
+library(tidyverse)
+library(treeio)
+library(phylostratr)
+library(taxizedb)
+
+```
+
+```{r}
+#the number of contigs assigned to each taxon by LCA
+taxidcounts <- read_table("Taxidcounts/spades_long_10mil_minimap2.taxidcounts", col_names = c("counts", "taxid"))
+#a list of all the viridiplantae species used to simulate the metagenomic dataset
+SIMspecies <- read_table("Viridiplantae_species_119_B3_116_L1_KapK-12-1-41_referenced.txt")
+#converts taxIDs to characters
+taxidcounts$taxid <- as.character(taxidcounts$taxid)
+#option filter for number of assigned contigs for inclusion (for readability of final plot)
+#taxidcounts <- taxidcounts %>% filter(counts > 9)
+#adds column with latin names from taxIDs
+taxidcounts$taxon <- taxid2name(taxidcounts$taxid)
+#adds column where species used in simulation are labelled as "true"
+taxidcounts$SIMtaxid <- taxidcounts$taxid %in% SIMspecies$taxa_ID
+#removes the Dryas octopetala var. asiatica reference, as this reference caused Dryas octopetala to be removed for other tools downstream (likely because this is a subspecies)
+taxidcounts2 <- taxidcounts %>% filter(taxon != "Dryas octopetala var. asiatica") 
+head(taxidcounts2)
+```
+
+```{r}
+#reads and calculates the summed length of contigs assigned to each taxon
+leng_sum <- read_table("Lengths/spades_long_10mil_minimap2.lengths", col_names = c("lengths", "taxid", "level")) %>% group_by(taxid) %>% summarise(lengthsum = sum(lengths))
+leng_sum$taxid <- as.character(leng_sum$taxid)
+head(leng_sum)
+```
+
+```{r}
+#append summed contig length to contig counts dataframe
+taxidcounts2 <- full_join(taxidcounts2, leng_sum, by="taxid") %>% filter(taxon != "Dryas octopetala var. asiatica")
+head(taxidcounts2)
+```
+
+
+```{r}
+#creates a phylogram tree from ncbi phylogeny using taxids in contig count dataframes
+tree <- ncbi_tree(taxidcounts2$taxid)
+#appends contig counts, lengths, and other information from the dataframe to the phylogram
+td <- full_join(tree, taxidcounts2, by=c("label"="taxid"))
+td
+```
+
+```{r, fig.height=20, fig.width= 20}
+#creates the plot for the tree
+p <- ggtree(td) +
+  #adds label for contig counts in light blue color, for both species at tips and higher taxons
+  geom_label2(aes(label=counts,  subset = !isTip, x = branch), fill = "lightblue1", size = 3) +
+    geom_label2(aes(label=counts, subset = isTip), fill = "lightblue1", hjust = 1, size = 3) +
+  #adds label for contig lengths in lavender color, for both species at tips and higher taxons
+    geom_label2(aes(label=lengthsum,  subset = !isTip, x = branch), fill = "lavender", hjust = 1.5, size = 3) +
+    geom_label2(aes(label=lengthsum, subset = isTip), fill = "lavender", hjust = 2, size = 3) +
+  #adds label for higher taxon names in yellow color
+  geom_label2(aes(x = branch, label = taxon, subset = !isTip), fill = "yellow", vjust = -0.4, size = 3) +
+  #adds red label for "incorrect" species not used to simulate dataset
+    geom_label2(aes(label = taxon, subset = isTip & !SIMtaxid), fill = "pink1", hjust = 0, size = 3) +
+  #adds green label for "correct" species used to simulate dataset
+    geom_label2(aes(label = taxon, subset = isTip & SIMtaxid), fill = "lightgreen", hjust = 0, size = 3)
+
+```
+  
+
+```{r, fig.height=10, fig.width= 10}
+#saves the tree as either pdf or png file
+#pdf(file = "Taxidcounts/spades_1mil_long_test2_lca.pdf", width = 15, height = 15)
+png("Taxidcounts/spades_10mil_long_lca.png", height = 1500, width = 1200)
+p + coord_cartesian(clip = 'off') + theme_tree2(plot.margin=margin(6, 100, 6, 6))
+dev.off()
+```
+
