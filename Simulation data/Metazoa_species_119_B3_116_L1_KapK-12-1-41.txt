@@ -1,0 +1,6 @@
+taxa_ID	taxa_name	taxonomic_rank	119_B3_116_L1_KapK-12-1-41
+108931	Nilaparvata_lugens	species	15
+131310	Parastrongyloides_trichosuri	species	9
+32324	mulleri_subgroup	species subgroup	0
+6087	Hydra_vulgaris	species	11
+6850	Limulus_polyphemus	species	10
